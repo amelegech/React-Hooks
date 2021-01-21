@@ -9,8 +9,7 @@ const MyUnMount = () => {
    
     if (num === 0 && !isLoad) return;
       setNum(num + 1);
-       //console.log('nnn',num);
-    
+       //console.log('Currunt ',num);
   },[isLoad]);
 
   React.useEffect(() => {
@@ -24,7 +23,13 @@ const MyUnMount = () => {
     return ()=>console.log("cleanup");
   }, []);
 
+ React.useEffect(()=>{
+     const timer= setInterval(()=>{
+         console.log('isLoad...',isLoad);
+     },1000)
+     return ()=> clearInterval(timer, 'clean timer after')
 
+ },[isLoad])
   const clickHandler = () => {
     setIsLoad(!isLoad);
     
